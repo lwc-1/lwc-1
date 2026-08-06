@@ -7,7 +7,7 @@ import urllib.parse
 import urllib.request
 
 
-USERNAME = os.environ.get("GITHUB_USERNAME", "LeoninCS")
+USERNAME = os.environ.get("GITHUB_USERNAME", "lwc-1")
 TOKEN = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
 README_PATH = "README.md"
 
@@ -15,7 +15,7 @@ README_PATH = "README.md"
 def request_json(url):
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "LeoninCS-readme-stats",
+        "User-Agent": "lwc-1-readme-stats",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     if TOKEN:
