@@ -6,7 +6,7 @@
 <table align="center">
   <tr>
     <td align="center"><b>4</b><br/><sub>Stars</sub></td>
-    <td align="center"><b>18</b><br/><sub>Commits</sub></td>
+    <td align="center"><b>19</b><br/><sub>Commits</sub></td>
     <td align="center"><b>1</b><br/><sub>Pull Requests</sub></td>
     <td align="center"><b>0</b><br/><sub>Issues</sub></td>
     <td align="center"><b>4</b><br/><sub>Repositories</sub></td>
