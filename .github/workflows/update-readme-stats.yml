@@ -1,32 +1,37 @@
-name: Update README stats
+name: Update README stats and activity
 
 on:
   schedule:
-    - cron: "12 */6 * * *"
+    # Run often enough to reach today's target even if one scheduled run is delayed.
+    - cron: "17,47 * * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
 
+concurrency:
+  group: activity-heartbeat-main
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
-
+    env:
+      TZ: Asia/Shanghai
+      ACTIVITY_TIMEZONE: Asia/Shanghai
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_USERNAME: lwc-1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Update stats
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: lwc-1
-        run: python3 scripts/update_github_stats.py
+      - name: Prepare today's activity commit
+        run: python3 scripts/prepare_activity_commit.py
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: update readme stats"
-          file_pattern: README.md
+          commit_message: "chore: daily activity heartbeat"
+          file_pattern: README.md .github/activity-heartbeat.txt
