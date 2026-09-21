@@ -1,1 +1,4 @@
-initialized
+date=2026-09-21
+target=4
+completed=1
+updated_at=2026-09-21T17:56:59+08:00
